@@ -5,8 +5,10 @@ namespace Model\Query;
 use PDO;
 use Util\Connection;
 
+// Repository query: elenco passeggeri di un viaggio filtrati per media feedback minima.
 class PasseggeriConMediaMinimaQueryRepository
 {
+    // Include anche passeggeri senza feedback (media NULL).
     public static function execute(int $idViaggio, float $soglia): array
     {
         $pdo = Connection::getInstance();

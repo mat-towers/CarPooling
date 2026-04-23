@@ -1,5 +1,5 @@
--- CarPoolingDB seed dataset for MySQL 8
--- Large sample data with targeted scenarios for required queries.
+-- Seed database CarPooling (MySQL 8).
+-- Dataset di esempio per testare le query principali.
 
 SET NAMES utf8mb4;
 SET time_zone = '+00:00';
@@ -154,7 +154,7 @@ INSERT INTO Passeggero (ID_Passeggero, TipoDocumento, NumeroDocumento) VALUES
 (27, 'Carta d Identita', 'CA1122015'), (28, 'Passaporto', 'PA1122016'), (29, 'Carta d Identita', 'CA1122017'),
 (30, 'Carta d Identita', 'CA1122018');
 
--- Targeted data for Query 1: many Napoli -> Roma trips on 2026-05-20, with one closed trip.
+-- Dati query 1: piu viaggi Napoli -> Roma il 2026-05-20, incluso uno chiuso.
 INSERT INTO Viaggio (ID_Viaggio, ID_Autista, CittaPartenza, CittaDestinazione, DataOraPartenza, TempoStimatoMinuti, Contributo, SostePreviste, BagagliAmmessi, AnimaliAmmessi, PostiDisponibili, PrenotazioniChiuse) VALUES
 (1, 1, 'Roma', 'Milano', '2026-05-20 07:15:00', 360, 35.00, 'Sosta autogrill Firenze', 1, 0, 3, 0),
 (2, 3, 'Napoli', 'Roma', '2026-05-20 10:30:00', 130, 15.00, 'Nessuna sosta', 0, 1, 2, 0),
@@ -181,7 +181,7 @@ INSERT INTO Viaggio (ID_Viaggio, ID_Autista, CittaPartenza, CittaDestinazione, D
 (23, 1, 'Napoli', 'Roma', '2026-05-20 14:30:00', 155, 13.00, 'Sosta Valmontone', 1, 0, 2, 0),
 (24, 8, 'Napoli', 'Roma', '2026-05-20 21:00:00', 140, 18.00, 'Nessuna sosta', 1, 1, 3, 0);
 
--- 70 bookings for dense examples.
+-- Prenotazioni di esempio.
 INSERT INTO Prenotazione (ID_Prenotazione, ID_Viaggio, ID_Passeggero, Stato, DataRichiesta) VALUES
 (1,1,2,'Accettata','2026-04-01 10:00:00'), (2,1,4,'Accettata','2026-04-01 10:30:00'), (3,1,11,'Accettata','2026-04-01 11:00:00'),
 (4,1,13,'Accettata','2026-04-01 11:30:00'), (5,1,12,'Accettata','2026-04-01 11:40:00'), (6,1,14,'Rifiutata','2026-04-01 12:00:00'),
@@ -208,9 +208,7 @@ INSERT INTO Prenotazione (ID_Prenotazione, ID_Viaggio, ID_Passeggero, Stato, Dat
 (67,11,16,'In attesa','2026-04-14 11:30:00'), (68,12,17,'Accettata','2026-04-14 11:45:00'), (69,13,18,'Accettata','2026-04-14 12:10:00'),
 (70,14,19,'Accettata','2026-04-14 12:30:00');
 
--- Targeted data for Query 2 and Query 3:
--- Query 2: booking #1 is accepted and has full reminder data.
--- Query 3 (trip #2): passengers 4,11,12,13 with mixed feedback averages and null cases.
+-- Dati query 2 e 3: promemoria completo su prenotazione 1 e feedback eterogenei su viaggio 2.
 INSERT INTO Feedback (ID_Prenotazione, Autore, Voto, Giudizio, DataInserimento) VALUES
 (1,'Passeggero',5,'Viaggio perfetto.','2026-04-20 09:00:00'), (1,'Autista',5,'Passeggero preciso.','2026-04-20 09:05:00'),
 (2,'Passeggero',4,'Buona esperienza.','2026-04-20 09:10:00'), (2,'Autista',4,'Passeggera educata.','2026-04-20 09:12:00'),

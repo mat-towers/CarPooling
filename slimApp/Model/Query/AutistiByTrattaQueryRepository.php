@@ -4,8 +4,10 @@ namespace Model\Query;
 
 use Util\Connection;
 
+// Repository query: cerca autisti disponibili per tratta e data.
 class AutistiByTrattaQueryRepository
 {
+    // Restituisce i viaggi aperti, ordinati per orario di partenza.
     public static function execute(string $partenza, string $destinazione, string $data): array
     {
         $pdo = Connection::getInstance();

@@ -8,6 +8,7 @@ use Psr\Container\ContainerInterface;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
+// Controller della query promemoria per prenotazione accettata.
 class QueryPromemoriaController
 {
     private ContainerInterface $container;
@@ -17,12 +18,14 @@ class QueryPromemoriaController
         $this->container = $container;
     }
 
+    // Carica la prenotazione richiesta e prepara i dati per l'anteprima email.
     public function index(Request $request, Response $response, array $args): Response
     {
         $params = $request->getQueryParams();
         $idPrenotazione = isset($params['id_prenotazione']) ? (int) $params['id_prenotazione'] : 0;
 
         $promemoria = null;
+        // La query viene lanciata solo con ID positivo.
         $submitted = $idPrenotazione > 0;
 
         if ($submitted) {

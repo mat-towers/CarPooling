@@ -1,5 +1,6 @@
 <?php
 
+// Parametri di connessione al database, con fallback su valori locali.
 define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
 define('DB_NAME', getenv('DB_NAME') ?: 'CarPoolingDB');
 define('DB_USER', getenv('DB_USER') ?: 'root');
@@ -12,4 +13,5 @@ define('BASE_PATH', getenv('BASE_PATH') !== false ? getenv('BASE_PATH') : '/slim
 // Attiva il gestore di errori personalizzato
 define('MY_ERROR_HANDLER', false);
 
+// Percorso pubblico usato dai template per riferimenti alle immagini.
 define('IMAGES', getenv('IMAGES_PATH') ?: '/slimApp/public/images');

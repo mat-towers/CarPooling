@@ -8,6 +8,7 @@ use Psr\Container\ContainerInterface;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
+// Controller della query passeggeri per un viaggio con soglia minima feedback.
 class QueryPasseggeriController
 {
     private ContainerInterface $container;
@@ -17,6 +18,7 @@ class QueryPasseggeriController
         $this->container = $container;
     }
 
+    // Recupera input utente, esegue la query e passa risultati + lista viaggi alla vista.
     public function index(Request $request, Response $response, array $args): Response
     {
         $params = $request->getQueryParams();
@@ -24,6 +26,7 @@ class QueryPasseggeriController
         $soglia = isset($params['soglia']) ? (float) $params['soglia'] : 0.0;
 
         $risultati = [];
+        // Considera la richiesta valida quando e selezionato un viaggio.
         $submitted = $idViaggio > 0;
 
         if ($submitted) {

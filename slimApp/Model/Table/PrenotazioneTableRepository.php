@@ -4,8 +4,10 @@ namespace Model\Table;
 
 use Util\Connection;
 
+// Repository tabellare: utility di lettura prenotazioni.
 class PrenotazioneTableRepository
 {
+    // Elenca solo prenotazioni accettate, usate nella form promemoria.
     public static function listAccettate(): array
     {
         $pdo = Connection::getInstance();

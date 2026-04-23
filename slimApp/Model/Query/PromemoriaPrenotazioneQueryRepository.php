@@ -4,8 +4,10 @@ namespace Model\Query;
 
 use Util\Connection;
 
+// Repository query: dati completi per invio promemoria prenotazione accettata.
 class PromemoriaPrenotazioneQueryRepository
 {
+    // Restituisce un array associativo o null se la prenotazione non e valida.
     public static function execute(int $idPrenotazione): ?array
     {
         $pdo = Connection::getInstance();

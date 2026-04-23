@@ -6,6 +6,7 @@ use PDO;
 
 require_once __DIR__ . '/../conf/config.php';
 
+// Singleton PDO: una sola connessione condivisa per tutto il ciclo applicativo.
 class Connection
 {
     private static $pdo = null;
@@ -14,6 +15,7 @@ class Connection
     {
     }
 
+    // Restituisce l'istanza PDO, inizializzandola alla prima richiesta.
     public static function getInstance()
     {
         if (self::$pdo === null) {

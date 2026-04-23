@@ -7,6 +7,7 @@ use Psr\Container\ContainerInterface;
 use Slim\Psr7\Request;
 use Slim\Psr7\Response;
 
+// Controller della query autisti per tratta e data.
 class QueryAutistiController
 {
     private ContainerInterface $container;
@@ -16,6 +17,7 @@ class QueryAutistiController
         $this->container = $container;
     }
 
+    // Legge i filtri dalla query string, esegue la ricerca e renderizza la pagina risultati.
     public function index(Request $request, Response $response, array $args): Response
     {
         $params = $request->getQueryParams();
@@ -24,8 +26,10 @@ class QueryAutistiController
         $data = trim((string) ($params['data'] ?? ''));
 
         $risultati = [];
+        // La form e considerata inviata appena e valorizzato almeno un filtro.
         $submitted = $partenza !== '' || $destinazione !== '' || $data !== '';
 
+        // Esegue la query solo con tutti i campi obbligatori presenti.
         if ($partenza !== '' && $destinazione !== '' && $data !== '') {
             $risultati = AutistiByTrattaQueryRepository::execute($partenza, $destinazione, $data);
         }
